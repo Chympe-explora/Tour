@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>Team Chympe Explora Official | Explore • Experience • Connect</title>
+<meta name="description" content="Team Chympe Explora Official — bamboo rafting, cave expeditions, 4x4 off-roading and camping in Krem Chympe, Meghalaya. Book your adventure today.">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --bg:#070a08;
+  --bg-2:#0d1210;
+  --panel:rgba(255,255,255,0.045);
+  --panel-strong:rgba(255,255,255,0.07);
+  --border:rgba(64,255,140,0.22);
+  --border-soft:rgba(255,255,255,0.08);
+  --green:#3dff7a;
+  --green-2:#0affc0;
+  --green-dim:#1f7a45;
+  --text:#eef4ef;
+  --muted:#9fb3a5;
+  --danger:#ff5c5c;
+  --radius:18px;
+  --maxw:1180px;
+  font-family:'Manrope',sans-serif;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:
+    radial-gradient(ellipse 900px 500px at 15% -10%, rgba(61,255,122,0.09), transparent 60%),
+    radial-gradient(ellipse 700px 500px at 100% 20%, rgba(10,255,192,0.06), transparent 60%),
+    var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px;}
+h1,h2,h3,.display{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:0.5px;text-transform:uppercase;}
+::selection{background:var(--green);color:#04140a;}
+
+/* jagged topo divider - signature element */
+.topo{
+  width:100%;height:34px;
+  background-repeat:repeat-x;background-size:220px 34px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='34' viewBox='0 0 220 34'%3E%3Cpath d='M0 34 L18 12 L34 26 L52 6 L70 22 L90 4 L110 24 L130 10 L150 28 L172 8 L192 20 L220 2 L220 34 Z' fill='%233dff7a' opacity='0.85'/%3E%3C/svg%3E");
+  opacity:0.5;
+}
+.topo.flip{transform:scaleY(-1);}
+
+/* ============ NAV ============ */
+header.nav{
+  position:sticky;top:0;z-index:200;
+  background:rgba(6,9,7,0.72);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border-soft);
+}
+.nav-inner{
+  max-width:var(--maxw);margin:0 auto;padding:12px 20px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.brand{display:flex;align-items:center;gap:12px;}
+.brand img{width:46px;height:46px;border-radius:50%;border:2px solid var(--green);box-shadow:0 0 16px rgba(61,255,122,0.35);}
+.brand-text .t1{font-family:'Anton',sans-serif;font-size:15px;letter-spacing:1px;line-height:1.15;}
+.brand-text .t1 span{color:var(--green);}
+.brand-text .t2{font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;}
+nav.links{display:flex;gap:28px;align-items:center;}
+nav.links a{font-size:14px;font-weight:600;color:var(--text);opacity:0.85;position:relative;padding:6px 0;}
+nav.links a:hover{opacity:1;color:var(--green);}
+.nav-cta{
+  background:var(--green);color:#04140a;padding:9px 18px;border-radius:30px;
+  font-weight:800;font-size:13px;display:flex;align-items:center;gap:6px;
+  box-shadow:0 0 0 rgba(61,255,122,0.5);transition:box-shadow .25s, transform .2s;
+}
+.nav-cta:hover{box-shadow:0 0 22px rgba(61,255,122,0.6);transform:translateY(-1px);}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;}
+.burger span{width:24px;height:2px;background:var(--green);border-radius:2px;}
+.mobile-menu{
+  display:none;position:fixed;inset:0;z-index:250;background:rgba(4,6,5,0.97);
+  padding:24px;flex-direction:column;
+}
+.mobile-menu.open{display:flex;}
+.mobile-menu .close-x{align-self:flex-end;background:none;border:none;color:var(--green);font-size:28px;cursor:pointer;}
+.mobile-menu a{font-family:'Anton',sans-serif;font-size:26px;padding:16px 0;border-bottom:1px solid var(--border-soft);}
+.mobile-menu .nav-cta{margin-top:24px;justify-content:center;}
+
+@media(max-width:860px){
+  nav.links{display:none;}
+  .burger{display:flex;}
+  header.nav .nav-cta.desktop-only{display:none;}
+}
+
+/* ============ HERO ============ */
+.hero{
+  position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+  padding:120px 0 60px;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background:url('assets/cave-guide-hero.jpg') center 30%/cover no-repeat;
+  filter:brightness(0.42) saturate(1.05);
+}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(7,10,8,0.4) 0%, rgba(7,10,8,0.55) 55%, var(--bg) 100%);}
+.hero-inner{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;padding:0 20px;width:100%;}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;color:var(--green);font-weight:700;
+  font-size:12px;letter-spacing:3px;text-transform:uppercase;margin-bottom:18px;
+  border:1px solid var(--border);padding:6px 14px;border-radius:30px;background:rgba(61,255,122,0.06);
+}
+.eyebrow::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);}
+.hero h1{
+  font-size:clamp(46px,10vw,104px);line-height:0.92;margin:0 0 6px;
+  color:var(--text);
+}
+.hero h1 .go{
+  color:var(--green);
+  text-shadow:0 0 26px rgba(61,255,122,0.55), 0 0 70px rgba(61,255,122,0.25);
+  display:block;
+}
+.hero p.sub{color:var(--muted);font-size:17px;max-width:480px;margin:18px 0 30px;line-height:1.55;}
+.hero p.sub b{color:var(--text);}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;padding:15px 28px;border-radius:40px;
+  font-weight:800;font-size:14px;letter-spacing:0.5px;cursor:pointer;border:none;
+  transition:transform .2s, box-shadow .25s;text-transform:uppercase;
+}
+.btn-primary{background:var(--green);color:#04140a;box-shadow:0 0 0 rgba(61,255,122,0.4);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(61,255,122,0.35);}
+.btn-ghost{background:transparent;color:var(--text);border:1.5px solid var(--border);}
+.btn-ghost:hover{border-color:var(--green);color:var(--green);}
+.scroll-ind{
+  position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:2;
+  display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--muted);
+  font-size:11px;letter-spacing:2px;text-transform:uppercase;
+  animation:bob 2.2s ease-in-out infinite;
+}
+@keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,8px);}}
+.scroll-ind .ring{width:26px;height:42px;border:1.5px solid var(--green);border-radius:20px;position:relative;}
+.scroll-ind .ring::before{content:'';position:absolute;top:6px;left:50%;width:4px;height:8px;background:var(--green);border-radius:3px;transform:translateX(-50%);}
+
+/* activity strip */
+.activity-strip{
+  display:grid;grid-template-columns:repeat(7,1fr);gap:1px;
+  background:var(--border-soft);border:1px solid var(--border-soft);border-radius:16px;overflow:hidden;
+  margin-top:44px;backdrop-filter:blur(6px);
+}
+.activity-strip .item{
+  background:rgba(10,14,11,0.7);padding:18px 8px;text-align:center;font-size:11.5px;font-weight:700;
+  color:var(--muted);letter-spacing:0.3px;display:flex;flex-direction:column;align-items:center;gap:8px;
+  transition:background .2s,color .2s;
+}
+.activity-strip .item:hover{background:rgba(61,255,122,0.08);color:var(--green);}
+.activity-strip svg{width:22px;height:22px;stroke:currentColor;}
+@media(max-width:760px){
+  .activity-strip{grid-template-columns:repeat(4,1fr);}
+  .activity-strip .item:nth-child(n+5){border-top:1px solid var(--border-soft);}
+}
+
+/* ============ SECTION SHELL ============ */
+section{padding:90px 0;position:relative;}
+.section-head{margin-bottom:44px;max-width:640px;}
+.section-head .kicker{color:var(--green);font-weight:800;font-size:12px;letter-spacing:3px;text-transform:uppercase;}
+.section-head h2{font-size:clamp(30px,5vw,52px);margin:10px 0 12px;line-height:1;}
+.section-head p{color:var(--muted);font-size:15.5px;line-height:1.6;}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease;}
+.reveal.in{opacity:1;transform:translateY(0);}
+
+/* ============ GALLERY ============ */
+.gallery-shell{position:relative;}
+.gallery-track-wrap{overflow:hidden;border-radius:var(--radius);}
+.gallery-track{display:flex;transition:transform .5s cubic-bezier(.65,0,.35,1);}
+.gallery-track .slide{flex:0 0 100%;position:relative;cursor:zoom-in;}
+.gallery-track .slide img{width:100%;height:min(60vw,460px);object-fit:cover;}
+.gallery-track .slide .cap{
+  position:absolute;left:20px;bottom:16px;background:rgba(4,8,6,0.55);backdrop-filter:blur(6px);
+  border:1px solid var(--border);padding:8px 16px;border-radius:30px;font-size:13px;font-weight:700;color:var(--green);
+}
+.gallery-nav{
+  position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;
+  background:rgba(6,10,8,0.65);border:1px solid var(--border);color:var(--green);display:flex;
+  align-items:center;justify-content:center;cursor:pointer;z-index:5;backdrop-filter:blur(6px);
+  transition:background .2s;
+}
+.gallery-nav:hover{background:rgba(61,255,122,0.18);}
+.gallery-nav.prev{left:10px;}.gallery-nav.next{right:10px;}
+.gallery-dots{display:flex;gap:8px;justify-content:center;margin-top:18px;}
+.gallery-dots span{width:8px;height:8px;border-radius:50%;background:var(--border-soft);cursor:pointer;transition:.2s;}
+.gallery-dots span.active{background:var(--green);width:22px;border-radius:5px;}
+
+/* lightbox */
+.lightbox{position:fixed;inset:0;background:rgba(2,4,3,0.94);z-index:400;display:none;align-items:center;justify-content:center;padding:24px;}
+.lightbox.open{display:flex;}
+.lightbox img{max-width:92vw;max-height:86vh;border-radius:10px;box-shadow:0 0 60px rgba(61,255,122,0.15);}
+.lightbox .lb-close{position:absolute;top:22px;right:26px;font-size:32px;color:var(--green);cursor:pointer;background:none;border:none;}
+
+/* ============ GLASS CARDS ============ */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+@media(max-width:900px){.grid-3{grid-template-columns:1fr;}}
+.glass{
+  background:var(--panel);border:1px solid var(--border-soft);border-radius:var(--radius);
+  padding:30px 26px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  transition:transform .3s, border-color .3s, background .3s;
+}
+.glass:hover{transform:translateY(-6px);border-color:var(--border);background:var(--panel-strong);}
+.glass .icon-badge{
+  width:48px;height:48px;border-radius:14px;background:rgba(61,255,122,0.1);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;margin-bottom:18px;
+}
+.glass .icon-badge svg{width:24px;height:24px;stroke:var(--green);}
+.glass h3{font-size:19px;margin:0 0 10px;letter-spacing:0.3px;}
+.glass p{color:var(--muted);font-size:14.5px;line-height:1.65;margin:0;}
+.glass ul{margin:0;padding:0;list-style:none;}
+.glass ul li{display:flex;gap:10px;color:var(--muted);font-size:14px;padding:6px 0;align-items:flex-start;}
+.glass ul li svg{width:16px;height:16px;stroke:var(--green);flex-shrink:0;margin-top:2px;}
+
+/* about layout */
+.about-layout{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+@media(max-width:900px){.about-layout{grid-template-columns:1fr;gap:30px;}}
+.about-photo{position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);}
+.about-photo img{width:100%;height:100%;object-fit:cover;}
+.about-photo .tag{
+  position:absolute;bottom:16px;left:16px;background:rgba(4,8,6,0.6);backdrop-filter:blur(6px);
+  border:1px solid var(--border);padding:10px 16px;border-radius:12px;font-size:13px;font-weight:700;
+}
+.about-text p{color:var(--muted);line-height:1.75;font-size:15.5px;}
+.stat-row{display:flex;gap:30px;margin-top:26px;flex-wrap:wrap;}
+.stat-row .stat b{font-family:'Anton',sans-serif;font-size:30px;color:var(--green);display:block;}
+.stat-row .stat span{color:var(--muted);font-size:12.5px;letter-spacing:1px;text-transform:uppercase;}
+
+/* services */
+.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+@media(max-width:980px){.services-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.services-grid{grid-template-columns:1fr;}}
+.svc-card{
+  border-radius:var(--radius);overflow:hidden;position:relative;border:1px solid var(--border-soft);
+  min-height:230px;display:flex;align-items:flex-end;transition:border-color .3s, transform .3s;
+}
+.svc-card:hover{border-color:var(--green);transform:translateY(-5px);}
+.svc-card .bgimg{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(0.55);transition:transform .5s, filter .3s;}
+.svc-card:hover .bgimg{transform:scale(1.08);filter:brightness(0.4);}
+.svc-card .bgimg.none{background:linear-gradient(160deg,#0d1a12,#07100b);}
+.svc-card::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(3,6,4,0.92) 100%);}
+.svc-card .content{position:relative;z-index:2;padding:18px;width:100%;}
+.svc-card .content .icon-badge{width:38px;height:38px;margin-bottom:10px;background:rgba(61,255,122,0.14);border-color:var(--green);}
+.svc-card .content .icon-badge svg{width:18px;height:18px;}
+.svc-card h4{font-size:16px;margin:0 0 4px;font-family:'Anton',sans-serif;letter-spacing:0.5px;text-transform:uppercase;}
+.svc-card p{margin:0;color:var(--muted);font-size:12.5px;}
+
+/* ============ BOOKING FORM ============ */
+.booking-shell{
+  background:var(--panel);border:1px solid var(--border);border-radius:24px;padding:6px;
+  backdrop-filter:blur(14px);box-shadow:0 0 60px rgba(61,255,122,0.05);
+}
+.booking-inner{padding:26px;}
+@media(max-width:600px){.booking-inner{padding:16px;}}
+.step{
+  border:1px solid var(--border-soft);border-radius:16px;margin-bottom:14px;overflow:hidden;background:rgba(255,255,255,0.02);
+}
+.step-head{
+  display:flex;align-items:center;gap:14px;padding:18px 20px;cursor:pointer;user-select:none;
+}
+.step-num{
+  width:30px;height:30px;border-radius:50%;background:rgba(61,255,122,0.12);border:1px solid var(--border);
+  color:var(--green);font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.step-head h4{margin:0;font-size:15.5px;flex:1;font-weight:800;letter-spacing:0.3px;}
+.step-head .chev{transition:transform .3s;color:var(--green);}
+.step.open .chev{transform:rotate(180deg);}
+.step-body{max-height:0;overflow:hidden;transition:max-height .4s ease;}
+.step.open .step-body{max-height:2400px;}
+.step-body-inner{padding:0 20px 22px;}
+
+.field{margin-bottom:16px;}
+.field label{display:block;font-size:12.5px;color:var(--muted);margin-bottom:7px;letter-spacing:0.5px;text-transform:uppercase;font-weight:700;}
+.field input[type=text],.field input[type=date],.field input[type=tel],.field textarea,.field select{
+  width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border-soft);border-radius:10px;
+  padding:13px 14px;color:var(--text);font-family:'Manrope',sans-serif;font-size:14.5px;
+}
+.field textarea{resize:vertical;min-height:90px;}
+.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(61,255,122,0.12);}
+.field-row{display:flex;gap:14px;flex-wrap:wrap;}
+.field-row>*{flex:1;min-width:160px;}
+
+.stepper{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,0.04);border:1px solid var(--border-soft);border-radius:10px;padding:8px 14px;justify-content:space-between;}
+.stepper button{
+  width:32px;height:32px;border-radius:50%;border:1px solid var(--border);background:rgba(61,255,122,0.1);
+  color:var(--green);font-size:18px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:0;
+}
+.stepper button:active{transform:scale(0.92);}
+.stepper .val{font-weight:800;font-size:16px;min-width:24px;text-align:center;}
+
+.tour-tabs{display:flex;gap:10px;margin-bottom:16px;}
+.tour-tabs button{
+  flex:1;padding:13px;border-radius:10px;border:1px solid var(--border-soft);background:rgba(255,255,255,0.02);
+  color:var(--muted);font-weight:800;cursor:pointer;font-size:13.5px;letter-spacing:0.4px;text-transform:uppercase;
+}
+.tour-tabs button.active{background:rgba(61,255,122,0.12);border-color:var(--green);color:var(--green);}
+.tour-panel{display:none;}
+.tour-panel.active{display:block;}
+.price-line{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px dashed var(--border-soft);font-size:14px;color:var(--muted);}
+.price-line b{color:var(--text);}
+.price-line:last-child{border-bottom:none;}
+
+.toggle-row{display:flex;align-items:center;justify-content:space-between;padding:6px 0;}
+.switch{position:relative;width:46px;height:26px;flex-shrink:0;}
+.switch input{opacity:0;width:0;height:0;}
+.switch .slider{position:absolute;inset:0;background:rgba(255,255,255,0.12);border-radius:30px;transition:.25s;cursor:pointer;border:1px solid var(--border-soft);}
+.switch .slider::before{content:'';position:absolute;width:18px;height:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.25s;}
+.switch input:checked+.slider{background:rgba(61,255,122,0.35);border-color:var(--green);}
+.switch input:checked+.slider::before{transform:translateX(20px);background:var(--green);}
+
+.dish-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border-soft);gap:10px;}
+.dish-row:last-child{border-bottom:none;}
+.dish-name{font-size:14px;font-weight:700;}
+.dish-price{color:var(--muted);font-size:12.5px;}
+
+.check-row{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px;font-size:13.5px;color:var(--muted);line-height:1.5;}
+.check-row input{margin-top:3px;accent-color:var(--green);width:17px;height:17px;flex-shrink:0;}
+
+.summary-box{
+  background:rgba(61,255,122,0.06);border:1px solid var(--border);border-radius:16px;padding:20px;margin-top:6px;
+}
+.summary-box .total-line{display:flex;justify-content:space-between;align-items:center;font-family:'Anton',sans-serif;font-size:24px;letter-spacing:0.5px;}
+.summary-box .total-line span:last-child{color:var(--green);}
+.summary-box small{color:var(--muted);display:block;margin-top:8px;font-size:12px;}
+
+.btn-submit{
+  width:100%;padding:18px;border-radius:14px;background:var(--green);color:#04140a;font-family:'Anton',sans-serif;
+  font-size:19px;letter-spacing:1px;border:none;cursor:pointer;text-transform:uppercase;margin-top:16px;
+  box-shadow:0 0 20px rgba(61,255,122,0.3);transition:box-shadow .25s, transform .2s;display:flex;align-items:center;justify-content:center;gap:10px;
+}
+.btn-submit:hover{box-shadow:0 0 40px rgba(61,255,122,0.55);transform:translateY(-2px);}
+.btn-submit:disabled{opacity:0.4;cursor:not-allowed;box-shadow:none;transform:none;}
+.form-msg{text-align:center;font-size:13px;color:var(--green);margin-top:12px;display:none;}
+.form-msg.show{display:block;}
+
+/* ============ CONTACT ============ */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+@media(max-width:900px){.contact-grid{grid-template-columns:1fr;}}
+.contact-links{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:500px){.contact-links{grid-template-columns:1fr;}}
+.contact-card{
+  display:flex;align-items:center;gap:14px;padding:18px;border-radius:14px;
+  background:var(--panel);border:1px solid var(--border-soft);transition:.25s;
+}
+.contact-card:hover{border-color:var(--green);background:var(--panel-strong);transform:translateY(-3px);}
+.contact-card .icon-badge{width:42px;height:42px;flex-shrink:0;margin:0;}
+.contact-card .icon-badge svg{width:20px;height:20px;}
+.contact-card b{display:block;font-size:14.5px;}
+.contact-card span{color:var(--muted);font-size:12.5px;word-break:break-word;}
+.map-frame{border-radius:16px;overflow:hidden;border:1px solid var(--border-soft);height:100%;min-height:280px;}
+.map-frame iframe{width:100%;height:100%;min-height:280px;border:0;filter:grayscale(0.3) invert(0.92) contrast(0.9);}
+
+/* ============ FOOTER ============ */
+footer{border-top:1px solid var(--border-soft);padding:50px 0 26px;}
+.footer-top{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-bottom:34px;}
+.footer-brand{display:flex;align-items:center;gap:12px;}
+.footer-brand img{width:42px;height:42px;border-radius:50%;border:2px solid var(--green);}
+.footer-brand .t1{font-family:'Anton',sans-serif;font-size:15px;}
+.footer-brand .t2{color:var(--muted);font-size:11px;letter-spacing:2px;text-transform:uppercase;}
+.footer-social{display:flex;gap:12px;}
+.footer-social a{
+  width:40px;height:40px;border-radius:50%;border:1px solid var(--border-soft);display:flex;align-items:center;
+  justify-content:center;transition:.25s;
+}
+.footer-social a:hover{border-color:var(--green);background:rgba(61,255,122,0.1);}
+.footer-social svg{width:18px;height:18px;stroke:var(--green);}
+.footer-bottom{
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:22px;border-top:1px solid var(--border-soft);
+  color:var(--muted);font-size:12.5px;
+}
+.footer-bottom a{color:var(--muted);}
+.footer-bottom a:hover{color:var(--green);}
+.footer-bottom .links{display:flex;gap:18px;flex-wrap:wrap;}
+
+/* utility */
+.text-center{text-align:center;margin-left:auto;margin-right:auto;}
+.mt-40{margin-top:40px;}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#home" class="brand">
+      <img src="assets/logo.png" alt="Team Chympe Explora logo" data-slot="logo">
+      <div class="brand-text">
+        <div class="t1">TEAM <span>CHYMPE</span> EXPLORA</div>
+        <div class="t2">Explore · Experience · Connect</div>
+      </div>
+    </a>
+    <nav class="links">
+      <a href="#home">Home</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#booking">Booking</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#booking" class="nav-cta desktop-only">Book Now</a>
+    <button class="burger" id="burgerBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close-x" id="closeMenu">&times;</button>
+  <a href="#home" class="mlink">Home</a>
+  <a href="#gallery" class="mlink">Gallery</a>
+  <a href="#about" class="mlink">About</a>
+  <a href="#services" class="mlink">Services</a>
+  <a href="#booking" class="mlink">Booking</a>
+  <a href="#contact" class="mlink">Contact</a>
+  <a href="#booking" class="btn btn-primary nav-cta">Book Now</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section id="home" class="hero" style="padding-top:100px;">
+  <div class="hero-bg" data-slot-bg="hero"></div>
+  <div class="hero-inner">
+    <div class="eyebrow">Krem Chympe · Meghalaya</div>
+    <h1>TEAM CHYMPE EXPLORA<span class="go">ADVENTURE AWAITS</span></h1>
+    <p class="sub">Explore the hidden wonders of Meghalaya with <b>Team Chympe Explora Official</b> — bamboo rafting, limestone caves and off-road trails, guided by locals who know this land best.</p>
+    <div class="hero-actions">
+      <a href="#booking" class="btn btn-primary">Book Your Adventure</a>
+      <a href="https://wa.me/qr/23KI4YY7LXGMJ1" target="_blank" rel="noopener" class="btn btn-ghost">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        Chat on WhatsApp
+      </a>
+    </div>
+
+    <div class="activity-strip">
+      <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 17h18M5 17V9l3-4h8l3 4v8M9 5v4M15 5v4"/></svg>Bamboo Rafting</div>
+      <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M5 17h14M6 17l1-6h10l1 6M8 11l2-5h4l2 5M7 21v-2M17 21v-2M9 14h.01M15 14h.01"/></svg>4×4 Off-road</div>
+      <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 21c4-10 8-14 9-16 1 2 5 6 9 16H3z"/></svg>Cave Expedition</div>
+      <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M2 17s2-2 4-2 3 2 5 2 3-2 5-2 4 2 4 2M2 21s2-2 4-2 3 2 5 2 3-2 5-2 4 2 4 2M12 3v10"/></svg>Swimming</div>
+      <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 3v18M6 9l6-6 6 6M8 21l4-4 4 4"/></svg>Cliff Jumping</div>
+      <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 20l9-14 9 14H3zM12 6v14"/></svg>Camping</div>
+      <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="m14.5 9.5-2 5-5 2 2-5z"/></svg>Local Guide</div>
+    </div>
+  </div>
+  <div class="scroll-ind"><div class="ring"></div>Scroll to Explore</div>
+</section>
+
+<div class="topo"></div>
+
+<!-- ============ GALLERY ============ -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="section-head reveal text-center" style="max-width:600px;">
+      <div class="kicker">Gallery</div>
+      <h2>The Wonders of Krem Chympe</h2>
+      <p>Bamboo rivers, limestone caverns and monsoon waterfalls — a glimpse of what awaits.</p>
+    </div>
+    <div class="gallery-shell reveal">
+      <div class="gallery-track-wrap">
+        <div class="gallery-track" id="galleryTrack">
+          <div class="slide"><img src="assets/waterfall-chymp-falls.jpg" alt="Chymp Falls waterfall" data-slot="gallery-1"><div class="cap">Chymp Falls</div></div>
+          <div class="slide"><img src="assets/cave-guide-hero.jpg" alt="Cave river exploration" data-slot="gallery-2"><div class="cap">Cave River Crossing</div></div>
+          <div class="slide"><img src="assets/waterfall-pool-swim.jpg" alt="Swimming at the falls" data-slot="gallery-3"><div class="cap">Natural Swimming Pool</div></div>
+          <div class="slide"><img src="assets/khaddum-hanging-bridge.jpg" alt="Khaddum hanging bridge" data-slot="gallery-4"><div class="cap">Khaddum Hanging Bridge</div></div>
+          <div class="slide"><img src="assets/camping-tent-site.jpg" alt="Camping site" data-slot="gallery-5"><div class="cap">Riverside Camping</div></div>
+          <div class="slide"><img src="assets/cave-group-adventure.jpg" alt="Cave adventure group" data-slot="gallery-6"><div class="cap">Cave Adventure Crew</div></div>
+        </div>
+      </div>
+      <button class="gallery-nav prev" id="galPrev" aria-label="Previous">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button class="gallery-nav next" id="galNext" aria-label="Next">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+    <div class="gallery-dots" id="galDots"></div>
+  </div>
+</section>
+
+<div class="topo flip"></div>
+
+<!-- ============ ABOUT ============ -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-layout">
+      <div class="about-photo reveal">
+        <img src="assets/waterfall-monsoon.jpg" alt="Team Chympe guide at monsoon waterfall" data-slot="about">
+        <div class="tag">📍 Krem Chympe, East Jaintia Hills</div>
+      </div>
+      <div class="about-text reveal">
+        <div class="kicker">About Us</div>
+        <h2 style="font-size:clamp(28px,4vw,44px);margin:10px 0 16px;">Local Guides. Real Adventure.</h2>
+        <p>We are a local adventure tourism team based in Meghalaya, dedicated to providing safe, professional and unforgettable experiences in the hidden wonders of Krem Chympe and Khaddum Falls.</p>
+        <p>Our certified local guides lead every rafting trip, cave expedition and off-road journey — sharing generations of local knowledge so you can explore with confidence, respect for nature, and zero worries.</p>
+        <div class="stat-row">
+          <div class="stat"><b>7+</b><span>Activities</span></div>
+          <div class="stat"><b>100%</b><span>Local Guides</span></div>
+          <div class="stat"><b>4x4</b><span>Off-road Access</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-3 mt-40">
+      <div class="glass reveal">
+        <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2 2 22h20L12 2z"/></svg></div>
+        <h3>Why Choose Us</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Experienced local guides</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Safety first, always</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Affordable, transparent pricing</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Fast, friendly customer support</li>
+        </ul>
+      </div>
+      <div class="glass reveal">
+        <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2C7 6 4 10 4 14a8 8 0 0 0 16 0c0-4-3-8-8-12z"/></svg></div>
+        <h3>Eco Friendly</h3>
+        <p>We follow eco-friendly, low-impact practices in every trip we run — protecting the caves, rivers and forests of Krem Chympe so they stay wild for the generations after us.</p>
+      </div>
+      <div class="glass reveal">
+        <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m14.5 9.5-2 5-5 2 2-5z"/></svg></div>
+        <h3>Our Mission</h3>
+        <p>To make Krem Chympe one of Meghalaya's premier adventure destinations — delivering professional guiding, sustainable tourism, and memories that last a lifetime.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="topo"></div>
+
+<!-- ============ SERVICES ============ -->
+<section id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">Our Service</div>
+      <h2>Everything You Need To Explore</h2>
+      <p>From bamboo river rafting to underground cave rivers — every trip is guided, gear included, and built around your safety.</p>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card reveal"><div class="bgimg" style="background-image:url('assets/waterfall-pool-swim.jpg')" data-slot-bg="svc-rafting"></div>
+        <div class="content"><div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 17h18M5 17V9l3-4h8l3 4v8"/></svg></div><h4>Bamboo Rafting</h4><p>Float the clear waters of Krem Chympe on a hand-built bamboo raft.</p></div>
+      </div>
+      <div class="svc-card reveal"><div class="bgimg" style="background-image:url('assets/jeep-offroad.jpg')" data-slot-bg="svc-jeep"></div>
+        <div class="content"><div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M6 17l1-6h10l1 6M8 11l2-5h4l2 5"/></svg></div><h4>4×4 Off-road</h4><p>A 20km round-trip jeep ride through forest trails and river crossings.</p></div>
+      </div>
+      <div class="svc-card reveal"><div class="bgimg" style="background-image:url('assets/cave-guide-hero.jpg')" data-slot-bg="svc-cave"></div>
+        <div class="content"><div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 21c4-10 8-14 9-16 1 2 5 6 9 16H3z"/></svg></div><h4>Cave Expedition</h4><p>Walk limestone passages and swim crystal-clear underground pools.</p></div>
+      </div>
+      <div class="svc-card reveal"><div class="bgimg none" data-slot-bg="svc-swim"></div>
+        <div class="content"><div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M2 17s2-2 4-2 3 2 5 2 3-2 5-2 4 2 4 2"/></svg></div><h4>Swimming</h4><p>Natural pools and river bends perfect for a cool, refreshing dip.</p></div>
+      </div>
+      <div class="svc-card reveal"><div class="bgimg" style="background-image:url('assets/waterfall-monsoon.jpg')" data-slot-bg="svc-cliff"></div>
+        <div class="content"><div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 3v18M6 9l6-6 6 6"/></svg></div><h4>Cliff Jumping</h4><p>For the adrenaline seekers — guided jump spots at safe depths.</p></div>
+      </div>
+      <div class="svc-card reveal"><div class="bgimg" style="background-image:url('assets/camping-tent-site.jpg')" data-slot-bg="svc-camp"></div>
+        <div class="content"><div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 20l9-14 9 14H3z"/></svg></div><h4>Camping</h4><p>Overnight riverside camps with tents, bonfire and full gear.</p></div>
+      </div>
+      <div class="svc-card reveal"><div class="bgimg" style="background-image:url('assets/cave-expedition-group.jpg')" data-slot-bg="svc-guide"></div>
+        <div class="content"><div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/></svg></div><h4>Local Guide</h4><p>Certified guides with every trip — informative, safe and friendly.</p></div>
+      </div>
+      <div class="svc-card reveal"><div class="bgimg" style="background-image:url('assets/khaddum-hanging-bridge.jpg')" data-slot-bg="svc-bridge"></div>
+        <div class="content"><div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M2 17c3-3 17-3 20 0M4 12v5M20 12v5"/></svg></div><h4>Khaddum Bridge</h4><p>Cross the famous hanging bridge en route to Khaddum Falls.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="topo flip"></div>
+
+<!-- ============ BOOKING ============ -->
+<section id="booking">
+  <div class="wrap">
+    <div class="section-head reveal text-center" style="max-width:600px;">
+      <div class="kicker">Book Your Adventure</div>
+      <h2>Reserve Your Trip</h2>
+      <p>Fill in your details below — your full booking summary will be sent straight to us on WhatsApp.</p>
+    </div>
+
+    <div class="booking-shell reveal">
+      <div class="booking-inner">
+        <form id="bookingForm">
+
+          <!-- STEP 1 -->
+          <div class="step open">
+            <div class="step-head" data-step>
+              <div class="step-num">1</div><h4>Personal Information</h4>
+              <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="step-body"><div class="step-body-inner">
+              <div class="field"><label>Full Name</label><input type="text" id="fullName" placeholder="e.g. Banri Kharshiing" required></div>
+              <div class="field-row">
+                <div class="field"><label>Phone / WhatsApp Number</label><input type="tel" id="phoneNum" placeholder="e.g. 98765 43210"></div>
+                <div class="field"><label>Preferred Tour Date</label><input type="date" id="tourDate"></div>
+              </div>
+              <div class="field-row">
+                <div class="field"><label>Adults</label>
+                  <div class="stepper"><button type="button" data-dec="adults">−</button><span class="val" id="adultsVal">1</span><button type="button" data-inc="adults">+</button></div>
+                </div>
+                <div class="field"><label>Children</label>
+                  <div class="stepper"><button type="button" data-dec="children">−</button><span class="val" id="childrenVal">0</span><button type="button" data-inc="children">+</button></div>
+                </div>
+              </div>
+            </div></div>
+          </div>
+
+          <!-- STEP 2 -->
+          <div class="step">
+            <div class="step-head" data-step>
+              <div class="step-num">2</div><h4>Tour Selection</h4>
+              <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="step-body"><div class="step-body-inner">
+              <div class="tour-tabs">
+                <button type="button" class="active" data-tour="private">Private Tour</button>
+                <button type="button" data-tour="shared">Shared Tour</button>
+              </div>
+              <div class="tour-panel active" id="panel-private">
+                <div class="price-line"><span>Local Guide</span><b>₹1,500</b></div>
+                <div class="price-line"><span>4×4 Jeep (round trip)</span><b>₹4,000</b></div>
+                <div class="price-line"><span>Activities (per person)</span><b>₹1,200</b></div>
+                <p style="color:var(--muted);font-size:12.5px;margin-top:10px;">Includes all activities: rafting, cave exploration, swimming &amp; cliff jumping.</p>
+              </div>
+              <div class="tour-panel" id="panel-shared">
+                <div class="price-line"><span>Shared tour (per person)</span><b>₹2,500</b></div>
+                <p style="color:var(--muted);font-size:12.5px;margin:10px 0;">Includes lunch. Please select your preference:</p>
+                <div class="field"><label>Food Preference</label>
+                  <select id="foodPref"><option value="Veg">Vegetarian</option><option value="Non-Veg">Non-Vegetarian</option></select>
+                </div>
+              </div>
+            </div></div>
+          </div>
+
+          <!-- STEP 3 -->
+          <div class="step">
+            <div class="step-head" data-step>
+              <div class="step-num">3</div><h4>Camping <span style="color:var(--muted);font-weight:600;font-size:12px;text-transform:none;">(optional)</span></h4>
+              <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="step-body"><div class="step-body-inner">
+              <div class="toggle-row">
+                <span>Add overnight camping</span>
+                <label class="switch"><input type="checkbox" id="campingToggle"><span class="slider"></span></label>
+              </div>
+              <div id="campingOptions" style="display:none;margin-top:14px;">
+                <div class="field-row">
+                  <div class="field"><label>Tents (₹500 each)</label>
+                    <div class="stepper"><button type="button" data-dec="tents">−</button><span class="val" id="tentsVal">1</span><button type="button" data-inc="tents">+</button></div>
+                  </div>
+                  <div class="field"><label>Blankets (₹150 each)</label>
+                    <div class="stepper"><button type="button" data-dec="blankets">−</button><span class="val" id="blanketsVal">0</span><button type="button" data-inc="blankets">+</button></div>
+                  </div>
+                </div>
+                <div class="toggle-row"><span>Bonfire (₹300)</span><label class="switch"><input type="checkbox" id="bonfireToggle"><span class="slider"></span></label></div>
+                <div class="toggle-row"><span>Camping Light (₹150)</span><label class="switch"><input type="checkbox" id="lightToggle"><span class="slider"></span></label></div>
+              </div>
+            </div></div>
+          </div>
+
+          <!-- STEP 4 -->
+          <div class="step">
+            <div class="step-head" data-step>
+              <div class="step-num">4</div><h4>Traditional Bamboo Dishes</h4>
+              <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="step-body"><div class="step-body-inner">
+              <div class="dish-row"><div><div class="dish-name">Fresh Bamboo Chicken</div><div class="dish-price">₹350 / serving</div></div>
+                <div class="stepper" style="width:120px;"><button type="button" data-dec="d1">−</button><span class="val" id="d1Val">0</span><button type="button" data-inc="d1">+</button></div></div>
+              <div class="dish-row"><div><div class="dish-name">Fresh Pork Bamboo</div><div class="dish-price">₹350 / serving</div></div>
+                <div class="stepper" style="width:120px;"><button type="button" data-dec="d2">−</button><span class="val" id="d2Val">0</span><button type="button" data-inc="d2">+</button></div></div>
+              <div class="dish-row"><div><div class="dish-name">Roasted Pork Belly</div><div class="dish-price">₹400 / serving</div></div>
+                <div class="stepper" style="width:120px;"><button type="button" data-dec="d3">−</button><span class="val" id="d3Val">0</span><button type="button" data-inc="d3">+</button></div></div>
+              <div class="dish-row"><div><div class="dish-name">Sticky Rice</div><div class="dish-price">₹100 / serving</div></div>
+                <div class="stepper" style="width:120px;"><button type="button" data-dec="d4">−</button><span class="val" id="d4Val">0</span><button type="button" data-inc="d4">+</button></div></div>
+              <div class="dish-row"><div><div class="dish-name">Bamboo Chai</div><div class="dish-price">₹50 / cup</div></div>
+                <div class="stepper" style="width:120px;"><button type="button" data-dec="d5">−</button><span class="val" id="d5Val">0</span><button type="button" data-inc="d5">+</button></div></div>
+              <p style="color:var(--muted);font-size:11.5px;margin-top:10px;">*Menu prices are indicative — final prices confirmed on WhatsApp.</p>
+            </div></div>
+          </div>
+
+          <!-- STEP 5 -->
+          <div class="step">
+            <div class="step-head" data-step>
+              <div class="step-num">5</div><h4>Special Request</h4>
+              <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="step-body"><div class="step-body-inner">
+              <div class="field"><label>Anything we should know?</label>
+                <textarea id="specialReq" placeholder="Dietary restrictions, celebrations, accessibility needs, etc."></textarea>
+              </div>
+            </div></div>
+          </div>
+
+          <!-- STEP 6 -->
+          <div class="step">
+            <div class="step-head" data-step>
+              <div class="step-num">6</div><h4>Terms &amp; Conditions</h4>
+              <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="step-body"><div class="step-body-inner">
+              <label class="check-row"><input type="checkbox" id="agreeTerms">I agree to the Terms &amp; Conditions and understand the safety guidelines for all outdoor and cave activities.</label>
+              <label class="check-row"><input type="checkbox" id="agreeRefund">I have read and accept the <a href="#" style="color:var(--green);text-decoration:underline;">Refund &amp; Cancellation Policy</a>.</label>
+            </div></div>
+          </div>
+
+          <!-- STEP 7 -->
+          <div class="summary-box">
+            <div class="total-line"><span>Estimated Total</span><span id="grandTotal">₹0</span></div>
+            <small>This is an estimate only. Your host will confirm the final price on WhatsApp.</small>
+          </div>
+          <button type="submit" class="btn-submit" id="submitBtn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            Book on WhatsApp
+          </button>
+          <div class="form-msg" id="formMsg">✓ Opening WhatsApp with your booking summary…</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="topo"></div>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head reveal text-center" style="max-width:600px;">
+      <div class="kicker">Contact</div>
+      <h2>Get In Touch</h2>
+      <p>Questions before you book? Reach us directly — we usually reply within the hour.</p>
+    </div>
+    <div class="contact-grid reveal">
+      <div class="contact-links">
+        <a class="contact-card" href="tel:+918787679579">
+          <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><b>Call Us</b><span>+91 87876 79579</span></div>
+        </a>
+        <a class="contact-card" href="https://wa.me/qr/23KI4YY7LXGMJ1" target="_blank" rel="noopener">
+          <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+          <div><b>WhatsApp</b><span>Chat with us</span></div>
+        </a>
+        <a class="contact-card" href="https://www.instagram.com/team_chympe_explora_official?igsh=MWxwcXIzZDh1ajJoMw==" target="_blank" rel="noopener">
+          <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></div>
+          <div><b>Instagram</b><span>@team_chympe_explora_official</span></div>
+        </a>
+        <a class="contact-card" href="mailto:chympeexplora@gmail.com">
+          <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg></div>
+          <div><b>Email</b><span>chympeexplora@gmail.com</span></div>
+        </a>
+      </div>
+      <div class="map-frame">
+        <iframe src="https://www.google.com/maps?q=Lumshnong,East%20Jaintia%20Hills,Meghalaya%20793000&output=embed" loading="lazy" allowfullscreen title="Location Map"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/logo.png" alt="logo">
+        <div><div class="t1">TEAM CHYMPE EXPLORA</div><div class="t2">Official</div></div>
+      </div>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/team_chympe_explora_official?igsh=MWxwcXIzZDh1ajJoMw==" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+        <a href="https://wa.me/qr/23KI4YY7LXGMJ1" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+      </div>
+    </div>
+    <p style="color:var(--muted);font-size:13.5px;max-width:420px;">Brishyrnot, Hno: 34, Near Football Ground, PO: Lumshnong, East Jaintia Hills, Meghalaya 793000, India</p>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Team Chympe Explora Official. All rights reserved.</span>
+      <div class="links">
+        <a href="#">Refund Policy</a>
+        <a href="#">Privacy Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose">&times;</button>
+  <img src="" id="lbImg" alt="">
+</div>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ---------- mobile menu ---------- */
+const burger = document.getElementById('burgerBtn');
+const mmenu = document.getElementById('mobileMenu');
+burger.addEventListener('click', ()=> mmenu.classList.add('open'));
+document.getElementById('closeMenu').addEventListener('click', ()=> mmenu.classList.remove('open'));
+mmenu.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=> mmenu.classList.remove('open')));
+
+/* ---------- scroll reveal ---------- */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ---------- gallery slider ---------- */
+const track = document.getElementById('galleryTrack');
+const slides = track.querySelectorAll('.slide');
+const dotsWrap = document.getElementById('galDots');
+let galIdx = 0;
+slides.forEach((_,i)=>{
+  const d = document.createElement('span');
+  if(i===0) d.classList.add('active');
+  d.addEventListener('click', ()=> goToSlide(i));
+  dotsWrap.appendChild(d);
+});
+function updateGallery(){
+  track.style.transform = `translateX(-${galIdx*100}%)`;
+  [...dotsWrap.children].forEach((d,i)=> d.classList.toggle('active', i===galIdx));
+}
+function goToSlide(i){ galIdx = (i+slides.length)%slides.length; updateGallery(); }
+document.getElementById('galPrev').addEventListener('click', ()=> goToSlide(galIdx-1));
+document.getElementById('galNext').addEventListener('click', ()=> goToSlide(galIdx+1));
+let galTimer = setInterval(()=> goToSlide(galIdx+1), 5000);
+track.closest('.gallery-shell').addEventListener('mouseenter', ()=> clearInterval(galTimer));
+
+/* lightbox on tap */
+const lightbox = document.getElementById('lightbox');
+const lbImg = document.getElementById('lbImg');
+slides.forEach(s=>{
+  s.addEventListener('click', ()=>{
+    lbImg.src = s.querySelector('img').src;
+    lightbox.classList.add('open');
+  });
+});
+document.getElementById('lbClose').addEventListener('click', ()=> lightbox.classList.remove('open'));
+lightbox.addEventListener('click', (e)=>{ if(e.target===lightbox) lightbox.classList.remove('open'); });
+
+/* ---------- booking accordion ---------- */
+document.querySelectorAll('.step-head').forEach(head=>{
+  head.addEventListener('click', ()=>{
+    const step = head.closest('.step');
+    const wasOpen = step.classList.contains('open');
+    step.classList.toggle('open');
+  });
+});
+
+/* ---------- steppers ---------- */
+const counters = { adults:1, children:0, tents:1, blankets:0, d1:0, d2:0, d3:0, d4:0, d5:0 };
+const limits = { adults:[1,20], children:[0,20], tents:[0,10], blankets:[0,20], d1:[0,50], d2:[0,50], d3:[0,50], d4:[0,50], d5:[0,50] };
+function refreshCounter(key){
+  const el = document.getElementById(key+'Val');
+  if(el) el.textContent = counters[key];
+}
+document.querySelectorAll('[data-inc]').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const key = btn.dataset.inc;
+    const [min,max] = limits[key];
+    counters[key] = Math.min(max, counters[key]+1);
+    refreshCounter(key); calcTotal();
+  });
+});
+document.querySelectorAll('[data-dec]').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const key = btn.dataset.dec;
+    const [min,max] = limits[key];
+    counters[key] = Math.max(min, counters[key]-1);
+    refreshCounter(key); calcTotal();
+  });
+});
+
+/* ---------- tour tabs ---------- */
+let tourType = 'private';
+document.querySelectorAll('[data-tour]').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('[data-tour]').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    tourType = btn.dataset.tour;
+    document.getElementById('panel-private').classList.toggle('active', tourType==='private');
+    document.getElementById('panel-shared').classList.toggle('active', tourType==='shared');
+    calcTotal();
+  });
+});
+
+/* ---------- camping toggle ---------- */
+const campingToggle = document.getElementById('campingToggle');
+const campingOptions = document.getElementById('campingOptions');
+campingToggle.addEventListener('change', ()=>{
+  campingOptions.style.display = campingToggle.checked ? 'block' : 'none';
+  calcTotal();
+});
+['bonfireToggle','lightToggle'].forEach(id=> document.getElementById(id).addEventListener('change', calcTotal));
+
+/* ---------- price calc ---------- */
+const DISH_PRICE = { d1:350, d2:350, d3:400, d4:100, d5:50 };
+function calcTotal(){
+  const adults = counters.adults, children = counters.children;
+  const people = adults + children;
+  let total = 0;
+  if(tourType==='private'){
+    total += 1500 + 4000 + 1200*people;
+  } else {
+    total += 2500*people;
+  }
+  if(campingToggle.checked){
+    total += counters.tents*500 + counters.blankets*150;
+    if(document.getElementById('bonfireToggle').checked) total += 300;
+    if(document.getElementById('lightToggle').checked) total += 150;
+  }
+  ['d1','d2','d3','d4','d5'].forEach(k=> total += counters[k]*DISH_PRICE[k]);
+  document.getElementById('grandTotal').textContent = '₹' + total.toLocaleString('en-IN');
+  return total;
+}
+calcTotal();
+
+/* ---------- submit -> whatsapp ---------- */
+document.getElementById('bookingForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const name = document.getElementById('fullName').value.trim();
+  const agreeTerms = document.getElementById('agreeTerms').checked;
+  const agreeRefund = document.getElementById('agreeRefund').checked;
+
+  if(!name){ alert('Please enter your full name.'); return; }
+  if(!agreeTerms || !agreeRefund){ alert('Please accept the Terms & Conditions and Refund Policy to continue.'); return; }
+
+  const phone = document.getElementById('phoneNum').value.trim();
+  const date = document.getElementById('tourDate').value;
+  const adults = counters.adults, children = counters.children;
+  const total = calcTotal();
+
+  let lines = [];
+  lines.push('*New Booking Request — Team Chympe Explora*');
+  lines.push('');
+  lines.push('*Name:* ' + name);
+  if(phone) lines.push('*Phone:* ' + phone);
+  if(date) lines.push('*Preferred Date:* ' + date);
+  lines.push('*Guests:* ' + adults + ' Adult(s), ' + children + ' Child(ren)');
+  lines.push('');
+  lines.push('*Tour Type:* ' + (tourType==='private' ? 'Private Tour' : 'Shared Tour'));
+  if(tourType==='private'){
+    lines.push('- Local Guide: ₹1,500');
+    lines.push('- 4×4 Jeep: ₹4,000');
+    lines.push('- Activities: ₹1,200 x ' + (adults+children) + ' = ₹' + (1200*(adults+children)));
+  } else {
+    lines.push('- Shared tour: ₹2,500 x ' + (adults+children) + ' = ₹' + (2500*(adults+children)));
+    lines.push('- Food Preference: ' + document.getElementById('foodPref').value);
+  }
+
+  if(campingToggle.checked){
+    lines.push('');
+    lines.push('*Camping:* Yes');
+    lines.push('- Tents: ' + counters.tents);
+    lines.push('- Blankets: ' + counters.blankets);
+    lines.push('- Bonfire: ' + (document.getElementById('bonfireToggle').checked ? 'Yes' : 'No'));
+    lines.push('- Camping Light: ' + (document.getElementById('lightToggle').checked ? 'Yes' : 'No'));
+  }
+
+  const dishNames = {d1:'Fresh Bamboo Chicken', d2:'Fresh Pork Bamboo', d3:'Roasted Pork Belly', d4:'Sticky Rice', d5:'Bamboo Chai'};
+  const dishOrders = Object.keys(dishNames).filter(k=> counters[k] > 0);
+  if(dishOrders.length){
+    lines.push('');
+    lines.push('*Bamboo Dishes:*');
+    dishOrders.forEach(k=> lines.push('- ' + dishNames[k] + ' x' + counters[k]));
+  }
+
+  const special = document.getElementById('specialReq').value.trim();
+  if(special){
+    lines.push('');
+    lines.push('*Special Request:* ' + special);
+  }
+
+  lines.push('');
+  lines.push('*Estimated Total:* ₹' + total.toLocaleString('en-IN'));
+
+  const msg = lines.join('\n');
+  const waUrl = 'https://wa.me/918787679579?text=' + encodeURIComponent(msg);
+
+  const formMsg = document.getElementById('formMsg');
+  formMsg.classList.add('show');
+  window.open(waUrl, '_blank');
+});
+
+/* ---------- owner image overrides (set via admin.html export) ---------- */
+(function applyOwnerOverrides(){
+  try{
+    const params = new URLSearchParams(window.location.search);
+    if(params.get('preview') === 'admin') return; // admin iframe handles its own state
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
