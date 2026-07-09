@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Owner Panel — Team Chympe Explora</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#070a08;--green:#3dff7a;--panel:#0f1512;--border:rgba(61,255,122,0.25);--muted:#9fb3a5;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:#eef4ef;font-family:'Manrope',sans-serif;}
+  h1{font-family:'Anton',sans-serif;font-size:22px;letter-spacing:0.5px;margin:0;}
+  .gate{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;}
+  .gate-box{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:34px;max-width:380px;width:100%;text-align:center;}
+  .gate-box input{width:100%;padding:13px;border-radius:10px;border:1px solid var(--border);background:#0a0e0b;color:#fff;margin:16px 0;font-size:15px;}
+  .gate-box button{width:100%;padding:13px;border-radius:10px;border:none;background:var(--green);color:#04140a;font-weight:800;cursor:pointer;font-size:14px;}
+  .app{display:none;}
+  .app.show{display:block;}
+  header{position:sticky;top:0;background:rgba(6,9,7,0.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:16px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;z-index:50;}
+  header p{margin:2px 0 0;color:var(--muted);font-size:12.5px;}
+  .btn{padding:11px 18px;border-radius:10px;border:1px solid var(--border);background:rgba(61,255,122,0.1);color:var(--green);font-weight:800;font-size:13px;cursor:pointer;}
+  .btn.solid{background:var(--green);color:#04140a;}
+  .layout{display:grid;grid-template-columns:340px 1fr;gap:0;min-height:calc(100vh - 70px);}
+  @media(max-width:900px){.layout{grid-template-columns:1fr;}}
+  .panel{padding:22px;border-right:1px solid var(--border);overflow-y:auto;max-height:calc(100vh - 70px);}
+  .panel h2{font-size:13px;text-transform:uppercase;letter-spacing:2px;color:var(--green);margin:22px 0 12px;}
+  .panel h2:first-child{margin-top:0;}
+  .slot{background:#0c110d;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:12px;margin-bottom:10px;}
+  .slot label{display:block;font-size:12.5px;font-weight:700;margin-bottom:8px;}
+  .slot .row{display:flex;align-items:center;gap:10px;}
+  .slot img{width:52px;height:52px;object-fit:cover;border-radius:8px;border:1px solid var(--border);flex-shrink:0;}
+  .slot input[type=file]{font-size:11px;color:var(--muted);flex:1;}
+  .preview-wrap{position:relative;}
+  iframe{width:100%;height:calc(100vh - 70px);border:0;display:block;background:#000;}
+  .hint{background:rgba(61,255,122,0.08);border:1px solid var(--border);border-radius:12px;padding:14px;font-size:12.5px;color:var(--muted);line-height:1.6;margin-bottom:16px;}
+  .hint b{color:#eef4ef;}
+</style>
+</head>
+<body>
+
+<!-- PASSCODE GATE -->
+<div class="gate" id="gate">
+  <div class="gate-box">
+    <h1>🔒 Owner Access</h1>
+    <p style="color:var(--muted);font-size:13px;margin-top:10px;">This page is for Team Chympe Explora staff only.</p>
+    <input type="password" id="pass" placeholder="Enter passcode">
+    <button class="btn solid" id="unlockBtn" style="width:100%;">Unlock</button>
+    <p id="gateErr" style="color:#ff5c5c;font-size:12px;display:none;">Incorrect passcode. Try again.</p>
+  </div>
+</div>
+
+<!-- APP -->
+<div class="app" id="app">
+  <header>
+    <div><h1>Team Chympe Explora — Owner Panel</h1><p>Upload new photos, preview instantly, then download the updated site.</p></div>
+    <div style="display:flex;gap:10px;">
+      <button class="btn" id="resetBtn">Reset Preview</button>
+      <button class="btn solid" id="downloadBtn">⬇ Download Updated Website</button>
+    </div>
+  </header>
+  <div class="layout">
+    <div class="panel">
+      <div class="hint">
+        <b>How this works:</b> pick a new photo for any slot below. The preview on the right updates instantly. When you're happy, click <b>Download Updated Website</b> — this saves a new <code>index.html</code> file. Replace the old file on your hosting (e.g. re-upload via your host's file manager or FTP) to make the change live for every visitor.
+      </div>
+
+      <h2>Branding</h2>
+      <div class="slot"><label>Logo</label><div class="row"><img id="prev-logo" src="assets/logo.png"><input type="file" accept="image/*" data-slot="logo" data-mode="src"></div></div>
+      <div class="slot"><label>Hero Background</label><div class="row"><img id="prev-hero" src="assets/cave-guide-hero.jpg"><input type="file" accept="image/*" data-slot="hero" data-mode="bg"></div></div>
+
+      <h2>Gallery Photos</h2>
+      <div class="slot"><label>Gallery 1</label><div class="row"><img id="prev-gallery-1" src="assets/waterfall-chymp-falls.jpg"><input type="file" accept="image/*" data-slot="gallery-1" data-mode="src"></div></div>
+      <div class="slot"><label>Gallery 2</label><div class="row"><img id="prev-gallery-2" src="assets/cave-guide-hero.jpg"><input type="file" accept="image/*" data-slot="gallery-2" data-mode="src"></div></div>
+      <div class="slot"><label>Gallery 3</label><div class="row"><img id="prev-gallery-3" src="assets/waterfall-pool-swim.jpg"><input type="file" accept="image/*" data-slot="gallery-3" data-mode="src"></div></div>
+      <div class="slot"><label>Gallery 4</label><div class="row"><img id="prev-gallery-4" src="assets/khaddum-hanging-bridge.jpg"><input type="file" accept="image/*" data-slot="gallery-4" data-mode="src"></div></div>
+      <div class="slot"><label>Gallery 5</label><div class="row"><img id="prev-gallery-5" src="assets/camping-tent-site.jpg"><input type="file" accept="image/*" data-slot="gallery-5" data-mode="src"></div></div>
+      <div class="slot"><label>Gallery 6</label><div class="row"><img id="prev-gallery-6" src="assets/cave-group-adventure.jpg"><input type="file" accept="image/*" data-slot="gallery-6" data-mode="src"></div></div>
+
+      <h2>About Section</h2>
+      <div class="slot"><label>About Photo</label><div class="row"><img id="prev-about" src="assets/waterfall-monsoon.jpg"><input type="file" accept="image/*" data-slot="about" data-mode="src"></div></div>
+
+      <h2>Service Cards</h2>
+      <div class="slot"><label>Bamboo Rafting</label><div class="row"><img id="prev-svc-rafting" src="assets/waterfall-pool-swim.jpg"><input type="file" accept="image/*" data-slot="svc-rafting" data-mode="bg"></div></div>
+      <div class="slot"><label>4×4 Off-road</label><div class="row"><img id="prev-svc-jeep" src="assets/jeep-offroad.jpg"><input type="file" accept="image/*" data-slot="svc-jeep" data-mode="bg"></div></div>
+      <div class="slot"><label>Cave Expedition</label><div class="row"><img id="prev-svc-cave" src="assets/cave-guide-hero.jpg"><input type="file" accept="image/*" data-slot="svc-cave" data-mode="bg"></div></div>
+      <div class="slot"><label>Swimming</label><div class="row"><img id="prev-svc-swim" src=""><input type="file" accept="image/*" data-slot="svc-swim" data-mode="bg"></div></div>
+      <div class="slot"><label>Cliff Jumping</label><div class="row"><img id="prev-svc-cliff" src="assets/waterfall-monsoon.jpg"><input type="file" accept="image/*" data-slot="svc-cliff" data-mode="bg"></div></div>
+      <div class="slot"><label>Camping</label><div class="row"><img id="prev-svc-camp" src="assets/camping-tent-site.jpg"><input type="file" accept="image/*" data-slot="svc-camp" data-mode="bg"></div></div>
+      <div class="slot"><label>Local Guide</label><div class="row"><img id="prev-svc-guide" src="assets/cave-expedition-group.jpg"><input type="file" accept="image/*" data-slot="svc-guide" data-mode="bg"></div></div>
+      <div class="slot"><label>Khaddum Bridge</label><div class="row"><img id="prev-svc-bridge" src="assets/khaddum-hanging-bridge.jpg"><input type="file" accept="image/*" data-slot="svc-bridge" data-mode="bg"></div></div>
+    </div>
+    <div class="preview-wrap">
+      <iframe id="previewFrame" src="index.html"></iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ---- CHANGE THIS PASSCODE ---- */
+const OWNER_PASSCODE = "chympe2026";
+
+const gate = document.getElementById('gate');
+const app = document.getElementById('app');
+document.getElementById('unlockBtn').addEventListener('click', tryUnlock);
+document.getElementById('pass').addEventListener('keydown', e=>{ if(e.key==='Enter') tryUnlock(); });
+function tryUnlock(){
+  const val = document.getElementById('pass').value;
+  if(val === OWNER_PASSCODE){
+    gate.style.display = 'none';
+    app.classList.add('show');
+    sessionStorage.setItem('chympe_admin_unlocked','1');
+  } else {
+    document.getElementById('gateErr').style.display = 'block';
+  }
+}
+if(sessionStorage.getItem('chympe_admin_unlocked') === '1'){
+  gate.style.display = 'none';
+  app.classList.add('show');
+}
+
+const frame = document.getElementById('previewFrame');
+
+function applyToFrame(slot, mode, dataUrl){
+  const doc = frame.contentDocument;
+  if(!doc) return;
+  if(mode === 'src'){
+    doc.querySelectorAll(`[data-slot="${slot}"]`).forEach(el=>{ el.src = dataUrl; });
+  } else {
+    doc.querySelectorAll(`[data-slot-bg="${slot}"]`).forEach(el=>{ el.style.backgroundImage = `url('${dataUrl}')`; });
+  }
+}
+
+document.querySelectorAll('input[type=file]').forEach(input=>{
+  input.addEventListener('change', (e)=>{
+    const file = e.target.files[0];
+    if(!file) return;
+    const slot = input.dataset.slot;
+    const mode = input.dataset.mode;
+    const reader = new FileReader();
+    reader.onload = function(ev){
+      const dataUrl = ev.target.result;
+      const previewImg = document.getElementById('prev-'+slot);
+      if(previewImg) previewImg.src = dataUrl;
+      // wait for iframe to be ready
+      if(frame.contentDocument && frame.contentDocument.readyState === 'complete'){
+        applyToFrame(slot, mode, dataUrl);
+      } else {
+        frame.addEventListener('load', ()=> applyToFrame(slot, mode, dataUrl), {once:true});
+      }
+    };
+    reader.readAsDataURL(file);
+  });
+});
+
+document.getElementById('resetBtn').addEventListener('click', ()=>{
+  frame.src = 'index.html?_=' + Date.now();
+});
+
+document.getElementById('downloadBtn').addEventListener('click', ()=>{
+  const doc = frame.contentDocument;
+  if(!doc){ alert('Preview not ready yet — please wait a moment and try again.'); return; }
+  const html = '<!DOCTYPE html>\n' + doc.documentElement.outerHTML;
+  const blob = new Blob([html], {type:'text/html'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'index.html';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  alert('Downloaded! Re-upload this index.html to your website hosting to publish the changes for all visitors.');
+});
+</script>
+</body>
+</html>
